@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "prc",
+  "version": "${version}",
+  "name": "Pouze Radkuv Cheat (PRC)",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/zorby/prc"
+  },
+  "license": "MIT",
+  "icon": "assets/prc/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.zorby.prc.PRC"
+    ]
+  },
+  "mixins": [
+    "prc.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
