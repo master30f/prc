@@ -1,25 +1,43 @@
 package net.zorby.prc;
 
-import com.mojang.brigadier.Command;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
-import net.minecraft.command.CommandRegistryAccess;
+import net.zorby.prc.database.Database;
+import net.zorby.prc.gui.Hud;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class PRC implements ClientModInitializer {
 
-    public final Logger logger = LogManager.getLogger("prc");
+    private static PRC INSTANCE;
+    public static final Logger logger = LogManager.getLogger("prc");
+
+    private Finder finder;
+    private Hud hud;
+    private Database database;
 
     @Override
     public void onInitializeClient() {
-        ClientCommandRegistrationCallback.EVENT.register(PRC::registerCommands);
+        PRC.INSTANCE = this;
+        this.finder = new Finder();
+        this.hud = new Hud();
+        this.database = new Database();
+        this.database.load();
+
+        Keybindings.register();
     }
 
-    private static void registerCommands(CommandDispatcher<FabricClientCommandSource> dispatcher, CommandRegistryAccess registryAccess) {
-        PRCCommand.register(dispatcher);
+    public static PRC getInstance() {
+        return INSTANCE;
+    }
+
+    public Finder getFinder() {
+        return this.finder;
+    }
+
+    public Hud getHud() {
+        return this.hud;
+    }
+    public Database getDatabase() {
+        return this.database;
     }
 }

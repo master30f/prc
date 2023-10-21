@@ -1,0 +1,10 @@
+{
+  "key.prc.hud": "Toggle HUD",
+  "key.prc.skip": "Skip current destination",
+  "category.prc.keybindings": "PRC Keybindings",
+  "input_world_seed.screen.title": "Input World Seed",
+  "input_world_seed.screen.input.label": "World Seed",
+  "input_world_seed.screen.input.placeholder": "Input World Seed",
+  "hud.navigating": "Navigating to %d, %d",
+  "hud.distance": "(%d blocks away)"
+}

@@ -4,5 +4,7 @@
   "package": "net.zorby.prc.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
+    "ClientPlayNetworkHandlerMixin",
+    "GameRendererMixin"
   ]
 }
